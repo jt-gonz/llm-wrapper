@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (msg === '') {
 			return;
 		}
+		inputText.value = '';
 
 		fetch('/gemini', {
 			method: 'POST',
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			.then(data => {
 				if (data.result) {
 					resultDiv.innerText = `Result: ${data.result}`;
-					inputText.value = '';
 				} else if (data.error) {
 					resultDiv.innerText = `Error: ${data.error}`;
 				}
