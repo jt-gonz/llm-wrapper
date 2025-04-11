@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Gemini Request</h1>
+    <form id="gemini-form">
+        <label for="input-text">Enter Text:</label>
+        <input type="text" id="input-text" name="text">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
