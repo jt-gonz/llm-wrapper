@@ -4,7 +4,7 @@ from . import db
 
 
 class Administrator(db.Model, UserMixin):
-    administrator_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(100), unique=True)
@@ -12,7 +12,7 @@ class Administrator(db.Model, UserMixin):
 
 
 class Professor(db.Model, UserMixin):
-    professor_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(100), unique=True)
@@ -22,7 +22,7 @@ class Professor(db.Model, UserMixin):
 
 
 class Student(db.Model, UserMixin):
-    student_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(100), unique=True)
@@ -35,10 +35,10 @@ class Student(db.Model, UserMixin):
 
 
 class Class(db.Model):
-    class_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     course_id = db.Column(db.Integer)
     course_name = db.Column(db.String(100))
-    professor_id = db.Column(db.Integer, db.ForeignKey("professor.professor_id"))
+    professor_id = db.Column(db.Integer, db.ForeignKey("professor.id"))
 
     professor = db.relationship("Professor", back_populates="classes")
     students = db.relationship(
@@ -49,7 +49,5 @@ class Class(db.Model):
 class Student_Class(db.Model):
     __tablename__ = "student_class"
 
-    student_id = db.Column(
-        db.Integer, db.ForeignKey("student.student_id"), primary_key=True
-    )
-    class_id = db.Column(db.Integer, db.ForeignKey("class.class_id"), primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey("student.id"), primary_key=True)
+    class_id = db.Column(db.Integer, db.ForeignKey("class.id"), primary_key=True)

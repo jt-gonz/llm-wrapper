@@ -42,6 +42,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            {% else %}
+            <div class="" role="alert">
+                {{message}}
+                <button type="button" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             {% endif %}
         {% endfor %}
     {% endif %}
