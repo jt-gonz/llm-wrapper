@@ -44,5 +44,9 @@ def make_request(msg_request: list[str]) -> str:
     return "Error sending request"
 
 
+def validate_credentials(email, password) -> bool:
+    return True
+
+
 if __name__ == "__main__":
     pass
